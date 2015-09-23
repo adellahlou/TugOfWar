@@ -9,9 +9,9 @@ LoginWrapper = React.createClass({
 		Blaze.remove(this.view);
 	},
 
-	render(){
+	render() {
 		return (
-			<span ref="container"></span
-		);
+			<span ref="container"></span>
+		)
 	}
 });
