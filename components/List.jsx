@@ -29,7 +29,7 @@ var FilteredList = React.createClass({
     return (
       <div className="filter-list">
         <input type="text" placeholder="Search" onChange={this.filterList}/>
-      <List items={this.state.items}/>
+        <List items={this.state.items}/>
       </div>
     );
   }
@@ -41,7 +41,7 @@ var List = React.createClass({
       <ul>
       {
         this.props.items.map(function(item) {
-          return <li key={item}>{item}</li>
+          return <PollItem key={item} />
         })
        }
       </ul>
@@ -49,4 +49,4 @@ var List = React.createClass({
   }
 });
 
-React.render(<FilteredList/>, document.getElementById('mount-point'));
+React.render(<FilteredList/>, document.getElementById('render-target'));
