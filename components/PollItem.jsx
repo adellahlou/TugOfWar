@@ -1,11 +1,10 @@
 PollItem = React.createClass({
   render: function(){
     return (
-      <li key={item}>
+      <li key={this.props.key}>
         <div> {this.props.key} </div>
       </li>
     )  
   }
 });
 
-React.render(<FilteredList/>, document.getElementById('react-target'));

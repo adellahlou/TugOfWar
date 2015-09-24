@@ -1,4 +1,4 @@
-App = React.creatClass({
+App = React.createClass({
 	mixins: [ReactMeteorData],
 
 	/**
@@ -17,7 +17,7 @@ App = React.creatClass({
 	*/
 	getMeteorData(){
 		return {
-			polls : Tasks.find().fetch({sort : {createdAt: -1}}),
+			polls : Polls.find().fetch({sort : {createdAt: -1}}),
 			currentUser : Meteor.user()
 		}
 	},
@@ -57,7 +57,7 @@ App = React.creatClass({
 	},
 
 	renderList(){
-		return (<List selectPoll={this.selectPoll} polls={this.data.polls} />);
+		return (<FilteredList selectPoll={this.selectPoll} polls={this.data.polls} />);
 	},
 
 	/**
@@ -67,21 +67,21 @@ App = React.creatClass({
 		//if not logged in, dispaly login
 		if(!this.data.currentUser){
 			return (
-				<div className="login"/> 
-					<LoginWrapper/>
+				<div className="login"> 
+					<LoginWrapper />
 				</div>
 			);
 		}
 
 		switch (this.state.display){
 			case 'list':
-				return renderList();
+				return this.renderList();
 			case 'poll':
-				return renderPoll();
+				return this.renderPoll();
 			case 'comments':
-				return renderComments();
+				return this.renderComments();
 			default:
-				return renderList();
+				return this.renderList();
+		}
 	}
-
-})
+});
