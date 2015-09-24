@@ -49,4 +49,4 @@ var List = React.createClass({
   }
 });
 
-React.render(<FilteredList/>, document.getElementById('render-target'));
+React.render(<FilteredList/>, document.getElementById('react-target'));
