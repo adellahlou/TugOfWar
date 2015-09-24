@@ -66,8 +66,8 @@ App = React.creatClass({
 	render(){
 		//if not logged in, dispaly login
 		if(!this.data.currentUser){
-			return (
-				<div className="login"/> 
+			return(
+				<div className="login"> 
 					<LoginWrapper/>
 				</div>
 			);
@@ -82,6 +82,7 @@ App = React.creatClass({
 				return renderComments();
 			default:
 				return renderList();
+		}
 	}
 
-})
+});
