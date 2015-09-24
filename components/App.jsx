@@ -1,16 +1,24 @@
 App = React.creatClass({
 	mixins: [ReactMeteorData],
 
+	/**
+	*	@property {String} display
+	*	@property {Object} selectedPoll
+	*/
 	getInitialState(){
 		return {
 			display : 'list',
-			selectedPoll : poll
+			selectedPoll : null
 		};
 	},
 
+	/**
+	*	@return {Object} 
+	*/
 	getMeteorData(){
 		return {
-			polls : Tasks.find().fetch();
+			polls : Tasks.find().fetch({sort : {createdAt: -1}}),
+			currentUser : Meteor.user()
 		}
 	},
 
@@ -27,9 +35,7 @@ App = React.creatClass({
  	*	@param {String} vote
  	*/
 	vote(pollId, vote){
-		let query = {$set : {}};
-		query.$set[vote] = this.selectedPoll.votes[vote] + 1;
-		Tasks.update(pollId,{$set : query});
+		Meteor.call('voteOnPoll', pollId, vote);
 	},
 
 	/**
@@ -51,13 +57,22 @@ App = React.creatClass({
 	},
 
 	renderList(){
-		return (<List selectPoll={this.selectPoll} polls={this.state.polls} />);
+		return (<List selectPoll={this.selectPoll} polls={this.data.polls} />);
 	},
 
 	/**
 	*	Switches rendering depending on this.state.display
 	*/
 	render(){
+		//if not logged in, dispaly login
+		if(!this.data.currentUser){
+			return (
+				<div className="login"/> 
+					<LoginWrapper/>
+				</div>
+			);
+		}
+
 		switch (this.state.display){
 			case 'list':
 				return renderList();
