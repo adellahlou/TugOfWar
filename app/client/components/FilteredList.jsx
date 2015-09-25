@@ -35,8 +35,6 @@ FilteredList = React.createClass({
      return { filteredItems: []};
   },
 
-
-
   /**
   *
   */
@@ -44,7 +42,7 @@ FilteredList = React.createClass({
     return (
       <div className="filter-list">
         {/*<input type="text" placeholder="Search" onChange={this.filterList}/>*/}
-        <List polls={this.props.initialItems} selectPoll={this.props.selectPoll}/>
+        <List items={this.props.initialItems} selectPoll={this.props.selectPoll} createItem={this.props.createItem}/>
       </div>
     );
   }
