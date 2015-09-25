@@ -4,16 +4,13 @@
 
 List = React.createClass({
   propTypes: {
-    items: React.PropTypes.array.isRequired,
-    createItem: React.PropTypes.func
-  },
-
-  createItemDefault(){
-    return null;
+    polls: React.PropTypes.array.isRequired
   },
 
   render: function() {
-    let ListItems = this.props.items.map(this.props.createItem);
+    let ListItems = this.props.polls.map((item) => {
+          return <PollItem item={item} selectPoll={this.props.selectPoll} />
+    });
 
     return (
       <div className='list-group'>
