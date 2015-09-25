@@ -58,7 +58,12 @@ App = React.createClass({
 	},
 
 	renderList(){
-		return (<FilteredList selectPoll={this.selectPoll} initialItems={this.data.polls} />);
+		return (
+			<div>
+				<Title />
+				<FilteredList selectPoll={this.selectPoll} initialItems={this.data.polls} />
+			</div>
+		);
 	},
 
 
