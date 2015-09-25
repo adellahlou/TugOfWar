@@ -1,11 +1,9 @@
 /**
-*	fixtures.js - used to populate the database with dummy data
-*/
-
-Polls = new Mongo.Collection('polls');
+*	fixtures.js - used to populate the database with dummy data   
+*/  
 
 
-if (Polls.find().count() === 0) {
+if (Polls && Polls.find().count() === 0) {
 	Polls.insert({
 		tag : 'SandersVTrump',
 		description : 'Which would be a better president',

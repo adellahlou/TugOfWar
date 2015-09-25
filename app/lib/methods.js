@@ -14,9 +14,10 @@ Meteor.methods({
 		}
 
 		// TODO: check types of pollId and vote
-
+		let attr = 'votes.'.concat(vote);
 		let query = {$set : {}};
-		query.$set[vote] = this.selectedPoll.votes[vote] + 1;
-		Polls.update(pollId,{$set : query});
+		
+		query.$set[attr] = Polls.findOne(pollId).votes[vote] + 1;
+		Polls.update(pollId, query);
 	}
-});
+});   

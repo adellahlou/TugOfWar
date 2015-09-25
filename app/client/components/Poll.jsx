@@ -1,6 +1,10 @@
+/**
+*	Poll.jsx - Displays the voting screen
+*/
+
 Poll = React.createClass({
 	propTypes: {
-		poll: React.PropTypes.object
+		poll: React.PropTypes.object.isRequired
 		/* 
 		poll.tag : React.PropTypes.string.isRequired,
 		poll.description : React.PropTypes.string,
@@ -10,11 +14,13 @@ Poll = React.createClass({
 	},
 
 	handleVote(event){
-		this.props.vote(event.target.value);
+		console.log( event);
+		console.log( event.currentTarget);
+		this.props.votePoll(this.props.poll._id, event.currentTarget.value);
 	},
 
 	makeChoiceButton(choice){
-		return (<button value={choice} className="btn voteChoice">{choice}</button>)
+		return (<button value={choice} className="btn voteChoice" onClick={this.handleVote}>{choice} </button>)
 	},
 
 	render(){
@@ -32,5 +38,4 @@ Poll = React.createClass({
 			</div>
 		);
 	}
-
 });

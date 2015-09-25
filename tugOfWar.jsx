@@ -9,6 +9,8 @@ if(Meteor.isClient){
 		passwordSignupFields : "USERNAME_ONLY"
 	});
 
+	
+
 	Meteor.startup(() => {
 		React.render(<App />, document.getElementById('react-target'));
 	});

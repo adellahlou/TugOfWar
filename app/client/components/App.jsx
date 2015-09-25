@@ -25,8 +25,8 @@ App = React.createClass({
 	/**
  	*	@param {Event} event
  	*/
-	selectPoll(id){
-		this.setState({selected : id});
+	selectPoll(poll){
+		this.setState({selectedPoll : poll, display : 'poll'});
 	},
 
 
@@ -34,8 +34,9 @@ App = React.createClass({
  	*	@param {Event} pollId
  	*	@param {String} vote
  	*/
-	vote(pollId, vote){
+	votePoll(pollId, vote){
 		Meteor.call('voteOnPoll', pollId, vote);
+		this.setState({display : 'visualize'});
 	},
 
 	/**
@@ -52,12 +53,17 @@ App = React.createClass({
 	*/
 	renderPoll(){
 		return(
-			<Poll poll={this.state.selectedPoll} vote={this.vote} />
+			<Poll poll={this.state.selectedPoll} votePoll={this.votePoll} />
 		);
 	},
 
 	renderList(){
-		return (<FilteredList selectPoll={this.selectPoll} polls={this.data.polls} />);
+		return (<FilteredList selectPoll={this.selectPoll} initialItems={this.data.polls} />);
+	},
+
+
+	renderVisual() {
+		return (<div></div>);
 	},
 
 	/**
@@ -67,7 +73,7 @@ App = React.createClass({
 		//if not logged in, dispaly login
 		if(!this.data.currentUser){
 			return (
-				<div className="login"> 
+				<div className="container"> 
 					<LoginWrapper />
 				</div>
 			);
