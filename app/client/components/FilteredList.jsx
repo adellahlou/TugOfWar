@@ -44,6 +44,7 @@ FilteredList = React.createClass({
     return (
       <div className="filter-list">
         {/*<input type="text" placeholder="Search" onChange={this.filterList}/>*/}
+        <input type="text" placeholder="Search"/>
         <List polls={this.props.initialItems} selectPoll={this.props.selectPoll}/>
       </div>
     );
