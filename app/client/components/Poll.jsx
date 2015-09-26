@@ -29,11 +29,17 @@ Poll = React.createClass({
 		var choices = Object.getOwnPropertyNames(poll.votes).map(this.makeChoiceButton);
 
 		return (
-			<div className="poll">
-				<h1 className="pollHeader"> {this.props.poll.tag} </h1>
-				<div>{blurb}</div>
-				<div className="votebox">
-					{choices}
+			<div>
+				<div className="row">
+					<h1 className="pollHeader"> {this.props.poll.tag} </h1>
+				</div>
+				<div className="row">
+					<div>{blurb}</div>
+				</div>
+				<div className="row">
+					<div className="votebox">
+						{choices}
+					</div>
 				</div>
 			</div>
 		);
