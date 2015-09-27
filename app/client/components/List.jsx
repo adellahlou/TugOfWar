@@ -8,8 +8,10 @@ List = React.createClass({
     createItem: React.PropTypes.func
   },
 
-  createItemDefault(){
-    return null;
+  createItemDefault(item){
+    return (
+      <li className="list-group-item">{item}</li>
+    );
   },
 
   render: function() {
