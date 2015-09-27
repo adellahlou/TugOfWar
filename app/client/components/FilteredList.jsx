@@ -42,9 +42,12 @@ FilteredList = React.createClass({
   */
   render(){
     return (
-      <div className="filter-list">
-        {/*<input type="text" placeholder="Search" onChange={this.filterList}/>*/}
-        <List polls={this.props.initialItems} selectPoll={this.props.selectPoll}/>
+      <div className="row">
+        <div className="filter-list col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+          {/*<input type="text" placeholder="Search" onChange={this.filterList}/>*/}
+          <input type="text" placeholder="Search"/>
+          <List polls={this.props.initialItems} selectPoll={this.props.selectPoll}/>
+        </div>
       </div>
     );
   }
