@@ -1,3 +1,7 @@
+//TODO: Integrate React Router
+/**
+*	App.jsx - Data holding and controlling component
+*/
 App = React.createClass({
 	mixins: [ReactMeteorData],
 
@@ -40,6 +44,15 @@ App = React.createClass({
 	},
 
 	/**
+	*	@param {String} comment
+	*	@param {String}	pollId
+	*/
+	commentPoll(comment, pollId){
+		Meteor.call('commentOnPoll', comment, pollId);
+	},
+
+
+	/**
  	*	@param {Event} pollId
  	*	@param {String} vote
  	*/
@@ -53,11 +66,20 @@ App = React.createClass({
 	},
 
 
+	createCommentItems(comment){
+		return (<CommentItem comment={comment}/>);
+	},
+
 	/**
 	*
 	*/
 	renderComments(){
-		return (<CommentList poll={this.state.selectedPoll}/>);
+		return (
+			<div>
+				<List items={this.state.selectedPoll}/>
+				<CommentBox commentOnPoll={this.commentOnPoll} />
+			</div>
+		);
 	},
 
 	/**

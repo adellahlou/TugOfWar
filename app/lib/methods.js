@@ -19,5 +19,21 @@ Meteor.methods({
 		
 		query.$set[attr] = Polls.findOne(pollId).votes[vote] + 1;
 		Polls.update(pollId, query);
+	},
+
+
+	commentOnPoll(pollId, newComment){
+		if(!Meteor.userId()){
+			throw new Meteor.Error("not-authorized");
+		}
+
+		let comment = { 
+			username : Meteor.user().username,
+			text : newComment,
+			createdOn : new Date()
+		};
+
+		let query = { $push : {comments : comment}};
+		Polls.update(pollId, query);
 	}
 });   
