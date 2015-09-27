@@ -44,6 +44,7 @@ App = React.createClass({
 	},
 
 	/**
+<<<<<<< HEAD
 	*	@param {String} comment
 	*	@param {String}	pollId
 	*/
@@ -79,6 +80,13 @@ App = React.createClass({
 				<List items={this.state.selectedPoll}/>
 				<CommentBox commentOnPoll={this.commentOnPoll} />
 			</div>
+=======
+	*
+	*/
+	renderComments(){
+		return(
+			<CommentList poll={this.state.selectedPoll}/>
+>>>>>>> origin/master
 		);
 	},
 
@@ -91,13 +99,13 @@ App = React.createClass({
 		);
 	},
 
-	renderPollList(){
-		return (<FilteredList selectPoll={this.selectPoll} initialItems={this.data.polls} createItem={this.createPollItems} />);
+	renderList(){
+		return (<FilteredList selectPoll={this.selectPoll} initialItems={this.data.polls} />);
 	},
 
 
 	renderVisual() {
-		return (<Visualizer goToComments={this.goToComments}/>);
+		return (<div></div>);
 	},
 
 	/**
@@ -115,15 +123,13 @@ App = React.createClass({
 
 		switch (this.state.display){
 			case 'list':
-				return this.renderPollList();
+				return this.renderList();
 			case 'poll':
 				return this.renderPoll();
 			case 'comments':
 				return this.renderComments();
-			case 'visualizer':
-				return this.renderVisual();
 			default:
-				return this.renderPollList();
+				return this.renderList();
 		}
 	}
 });
