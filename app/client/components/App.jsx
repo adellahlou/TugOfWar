@@ -44,7 +44,6 @@ App = React.createClass({
 	},
 
 	/**
-<<<<<<< HEAD
 	*	@param {String} comment
 	*	@param {String}	pollId
 	*/
@@ -80,13 +79,6 @@ App = React.createClass({
 				<List items={this.state.selectedPoll}/>
 				<CommentBox commentOnPoll={this.commentOnPoll} />
 			</div>
-=======
-	*
-	*/
-	renderComments(){
-		return(
-			<CommentList poll={this.state.selectedPoll}/>
->>>>>>> origin/master
 		);
 	},
 
