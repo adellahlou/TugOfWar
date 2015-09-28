@@ -126,7 +126,16 @@ h1.title{
   text-align: center;
 }
 
+.visual {
+  height: 100px;
+}
 
+#vizBlock {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
 
 
 
