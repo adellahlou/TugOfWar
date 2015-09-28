@@ -63,7 +63,7 @@ App = React.createClass({
 		this.setState({display : 'comments'});
 	},
 
-	gotToPolls(){
+	goToPolls(){
 		this.setState({display : 'list'});
 	},
 

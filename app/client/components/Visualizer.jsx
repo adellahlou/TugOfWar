@@ -16,7 +16,7 @@ Visualizer = React.createClass({
 						</button>
 					</div>
 				</div>
-				<script>
+				{/*<script>
 					$(function () {
 					    $('#container').highcharts({
 				            chart: {
@@ -63,7 +63,7 @@ Visualizer = React.createClass({
 				            }]
 					    })
 					});
-				</script>
+				</script>*/}
 			</div>
 
 		);
