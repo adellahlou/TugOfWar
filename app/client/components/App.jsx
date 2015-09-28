@@ -77,8 +77,8 @@ App = React.createClass({
 	renderComments(){
 		return (
 			<div>
-				<List items={this.state.selectedPoll.comments} createItem={this.createCommentItem}/>
 				<CommentBox commentOnPoll={this.commentOnPoll} />
+				<List items={this.state.selectedPoll.comments} createItem={this.createCommentItem}/>
 			</div>
 		);
 	},
@@ -103,7 +103,7 @@ App = React.createClass({
 
 
 	renderVisual() {
-		return (<Visualizer poll={this.state.selectedPoll} votePoll={this.votePoll} />);
+		return (<Visualizer poll={this.state.selectedPoll} votePoll={this.votePoll} goToComments={this.goToComments}/>);
 	},
 
 	/**
@@ -113,7 +113,7 @@ App = React.createClass({
 		//if not logged in, dispaly login
 		if(!this.data.currentUser){
 			return (
-				<div className="container"> 
+				<div> 
 					<LoginWrapper />
 				</div>
 			);

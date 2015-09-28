@@ -1,18 +1,20 @@
 Visualizer = React.createClass({
 	propTypes: {
 		poll: React.PropTypes.object.isRequired
-		/* 
-		poll.tag : React.PropTypes.string.isRequired,
-		poll.description : React.PropTypes.string,
-		poll.votes : React.PropTypes.object.isRequired,
-		poll.colors : React.PropTypes.object.isRequired
-		*/
 	},
+
+
 	render(){
+		let style = { height: '400px'}
+
 		return (
 			<div className="row">
 				<div className="col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
-					<div id="container" style="height: 400px">TEST</div>
+					<div id="container" style={style}>
+						<button onClick={this.props.goToComments} className="btn btn-lg btn-danger-lg">
+							GO TO COMMENTS
+						</button>
+					</div>
 				</div>
 				<script>
 					$(function () {

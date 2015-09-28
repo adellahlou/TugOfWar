@@ -6,7 +6,7 @@ PollItem = React.createClass({
 
   render() {
     return (
-      <a href='#' className="list-group-item" key={this.props.item._id} onClick={this.handleSelection}>
+      <a href='#' className="list-group-item thumbnail pollItem" key={this.props.item._id} onClick={this.handleSelection}>
         {this.props.item.tag} 
       </a>
     );
