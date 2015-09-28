@@ -28,7 +28,10 @@ body {
   /*border-radius: 5px;*/
 }
 
-
+#login-buttons{
+  font-size: 5em;
+  background: #ecf0f1;
+}
 
 .filter-list input {
   width: 100%;

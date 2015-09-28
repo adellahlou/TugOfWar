@@ -19,7 +19,7 @@ CommentBox = React.createClass({
 			<div className="input-group input-group-lg">
 				<input ref="commentInput" type="text" className="form-control" placeholder="Enter comment..."/>
 				<span className="input-group-btn">
-					<button class="btn btn-primary" type="submit" onClick={this.handleSubmit}>Comment</button>
+					<input className="btn btn-primary" type="submit" onClick={this.handleSubmit}>Comment</button>
 				</span>
 			</div>
 		)

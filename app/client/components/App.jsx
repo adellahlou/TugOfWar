@@ -41,6 +41,7 @@ App = React.createClass({
 	votePoll(pollId, vote){
 		Meteor.call('voteOnPoll', pollId, vote);
 		this.setState({display : 'visualize'});
+		this.setState({selectedPoll: Polls.findOne(this.state.selectedPoll._id)})
 	},
 
 	/**
@@ -50,6 +51,7 @@ App = React.createClass({
 	commentOnPoll(newComment){
 		console.log("Adding to %s new comment: %s", this.state.selectedPoll._id, newComment);
 		Meteor.call('commentOnPoll', this.state.selectedPoll._id, newComment);
+		this.setState({selectedPoll: Polls.findOne(this.state.selectedPoll._id)})
 	},
 
 
@@ -59,6 +61,10 @@ App = React.createClass({
  	*/
 	goToComments(){
 		this.setState({display : 'comments'});
+	},
+
+	gotToPolls(){
+		this.setState({display : 'list'});
 	},
 
 
@@ -77,7 +83,7 @@ App = React.createClass({
 	renderComments(){
 		return (
 			<div>
-				<CommentBox commentOnPoll={this.commentOnPoll} />
+				<CommentBox commentOnPoll={this.commentOnPoll} goToPolls={this.goToPolls}/>
 				<List items={this.state.selectedPoll.comments} createItem={this.createCommentItem}/>
 			</div>
 		);
