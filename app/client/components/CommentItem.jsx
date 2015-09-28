@@ -10,11 +10,15 @@ CommentItem = React.createClass({
 
 
 	render(){
+		let date = this.props.comment.createdOn.toDateString();
+
 		return (
-			<li className="list-group-item comment">
-				<h3>{this.props.comment.username}</h3>
+			<li className="comment list-group-item">
+				<h3>
+					{this.props.comment.username} 				
+					<span className="date">{date}</span>
+				</h3>
 					{this.props.comment.text} 
-				<span className="date">{this.props.comment.createdOn}</span>
 			</li>
 		);
 	}

@@ -4,7 +4,16 @@
 
 FilteredList = React.createClass({
   propTypes: {
-    initialItems: React.PropTypes.array.isRequired
+    initialItems: React.PropTypes.array.isRequired,
+    createItem: React.PropTypes.func,
+    itemClickHandler : React.PropTypes.func
+  },
+
+  /**
+  *
+  */
+  getInitialState(){
+     return { filteredItems: []};
   },
 
 
@@ -28,14 +37,6 @@ FilteredList = React.createClass({
   },
 
 
-  /**
-  *
-  */
-  getInitialState(){
-     return { filteredItems: []};
-  },
-
-
 
   /**
   *
@@ -44,9 +45,8 @@ FilteredList = React.createClass({
     return (
       <div className="row">
         <div className="filter-list col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
-          {/*<input type="text" placeholder="Search" onChange={this.filterList}/>*/}
           <input type="text" placeholder="Search"/>
-          <List polls={this.props.initialItems} selectPoll={this.props.selectPoll}/>
+          <List items={this.props.initialItems} itemClickHandler={this.props.selectPoll} createItem={this.props.createItem}/>
         </div>
       </div>
     );
