@@ -102,7 +102,7 @@ App = React.createClass({
 
 
 	renderVisual() {
-		return (<div></div>);
+		return (<Visualizer poll={this.state.selectedPoll} votePoll={this.votePoll} />);
 	},
 
 	/**
@@ -125,6 +125,8 @@ App = React.createClass({
 				return this.renderPoll();
 			case 'comments':
 				return this.renderComments();
+			case 'visualize':
+				return this.renderVisual();
 			default:
 				return this.renderList();
 		}
