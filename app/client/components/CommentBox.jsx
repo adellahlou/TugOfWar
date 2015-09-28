@@ -9,8 +9,9 @@ CommentBox = React.createClass({
 	},
 
 	handleSubmit(event){
-		let comment = React.findDOMNode(this.refs.commentInput).value;
-		Metor.call('commentOnPoll', comment)
+		let commentBox = React.findDOMNode(this.refs.commentInput);
+		this.props.commentOnPoll(commentBox.value);
+		commentBox.value = '';
 	},
 
 	render(){

@@ -44,11 +44,12 @@ App = React.createClass({
 	},
 
 	/**
-	*	@param {String} comment
+	*	@param {String} newComment
 	*	@param {String}	pollId
 	*/
-	commentPoll(comment, pollId){
-		Meteor.call('commentOnPoll', comment, pollId);
+	commentOnPoll(newComment){
+		console.log("Adding to %s new comment: %s", this.state.selectedPoll._id, newComment);
+		Meteor.call('commentOnPoll', this.state.selectedPoll._id, newComment);
 	},
 
 
@@ -61,12 +62,12 @@ App = React.createClass({
 	},
 
 
-	createPollItems(poll){
+	createPollItem(poll){
           return (<PollItem item={poll} selectPoll={this.selectPoll} />);
 	},
 
 
-	createCommentItems(comment){
+	createCommentItem(comment){
 		return (<CommentItem comment={comment}/>);
 	},
 
@@ -76,7 +77,7 @@ App = React.createClass({
 	renderComments(){
 		return (
 			<div>
-				<List items={this.state.selectedPoll}/>
+				<List items={this.state.selectedPoll.comments} createItem={this.createCommentItem}/>
 				<CommentBox commentOnPoll={this.commentOnPoll} />
 			</div>
 		);
@@ -95,14 +96,20 @@ App = React.createClass({
 		return (
 			<div>
 				<Title />
-				<FilteredList selectPoll={this.selectPoll} initialItems={this.data.polls} />
+				<FilteredList itemClickHandler={this.selectPoll} createItem={this.createPollItem} initialItems={this.data.polls} />
 			</div>
 		);
 	},
 
 
 	renderVisual() {
-		return (<div></div>);
+		return (
+			<div>
+				<button onClick={this.goToComments}>
+					Go to comments <span class="fa fa-angle-double-right"></span>
+				</button>
+			</div>
+		);
 	},
 
 	/**
@@ -125,6 +132,8 @@ App = React.createClass({
 				return this.renderPoll();
 			case 'comments':
 				return this.renderComments();
+			case 'visualize':
+				return this.renderVisual();
 			default:
 				return this.renderList();
 		}

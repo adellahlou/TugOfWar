@@ -5,19 +5,27 @@
 List = React.createClass({
   propTypes: {
     items: React.PropTypes.array.isRequired,
-    createItem: React.PropTypes.func
+    createItem: React.PropTypes.func,
+    clickHandler: React.PropTypes.func
   },
 
+
+  /**
+  *
+  */
   createItemDefault(item){
     return (
-      <li className="list-group-item">{item}</li>
+      <li className="list-group-item" onClick={this.props.clickHandler}>{item}</li>
     );
   },
 
+
+  /**
+  *
+  */
   render: function() {
-    let ListItems = this.props.polls.map((item) => {
-          return <PollItem item={item} selectPoll={this.props.selectPoll} />
-    });
+    let factory = this.props.createItem || this.createItemDefault;
+    let ListItems = this.props.items.map(factory);
 
     return (
       <div className='list-group'>
